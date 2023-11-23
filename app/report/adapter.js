@@ -4,11 +4,10 @@ function getMapFromTableData(dataTable, fieldId, rows) {
 	const indexFieldId = tableRow.indexOf(fieldId)
 	const indexRow = {}
 	rows.forEach(row => (indexRow[row] = tableRow.indexOf(row)))
+	const keys = Object.keys(indexRow)
 	dataTable.forEach(item => {
 		const body = {}
-		Object.keys(indexRow).forEach(row => {
-			body[row] = item[indexRow[row]]
-		})
+		keys.forEach(row => (body[row] = item[indexRow[row]]))
 		data.set(item[indexFieldId], body)
 	})
 	return data
