@@ -30,30 +30,18 @@ router.get('/report', async (req, res) => {
 		}
 	}
 	const response = await Service.index(schema)
-	if (response)
-		res.status(200).json({
-			status: 'ok',
-			body: response
-		})
+	if (response) res.status(200).json({ status: 'ok', body: response })
 	else res.status(404).json({ status: 'error' })
 })
 router.post('/admin/report/all-tabs', async (req, res) => {
 	const response = await Service.getAllTabs()
-	if (response.confirm === 'ok')
-		res.status(200).json({
-			status: 'ok',
-			body: response.body
-		})
+	if (response.confirm === 'ok') res.status(200).json({ status: 'ok', body: response.body })
 	else res.status(404).json({ status: 'error' })
 })
 router.post('/admin/report/tab-column', async (req, res) => {
 	const { tabName } = req.body
 	const response = await Service.getNameColumnForTab(tabName)
-	if (response.confirm === 'ok')
-		res.status(200).json({
-			status: 'ok',
-			body: response.body
-		})
+	if (response.confirm === 'ok') res.status(200).json({ status: 'ok', body: response.body })
 	else res.status(404).json({ status: 'error' })
 })
 router.post('/admin/report/result', async (req, res) => {
