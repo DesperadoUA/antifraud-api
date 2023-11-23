@@ -5,7 +5,8 @@
 	"main": "app.js",
 	"scripts": {
 		"dev": "NODE_ENV=dev nodemon app.js",
-		"start": "node app.js"
+		"start": "node app.js",
+		"test": "jest"
 	},
 	"keywords": [],
 	"author": "",
@@ -22,6 +23,7 @@
 	},
 	"devDependencies": {
 		"@types/express": "^4.17.19",
+		"jest": "^29.7.0",
 		"nodemon": "^3.0.1"
 	}
 }
