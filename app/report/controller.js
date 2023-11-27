@@ -4,8 +4,8 @@ const Service = require('./service')
 router.get('/report', async (req, res) => {
 	const schema = {
 		main: {
-			tableName: 'Sheet14',
-			rows: ['Reg.Date', 'Btag', 'Status'],
+			tableName: 'main',
+			rows: ['Reg.Date', 'Btag'],
 			fieldId: 'Id'
 		},
 		relatives: [
