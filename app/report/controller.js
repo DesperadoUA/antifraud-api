@@ -50,8 +50,31 @@ router.post('/admin/report/result', async (req, res) => {
 	if (response) res.status(200).json(response)
 	else res.status(404).json({ status: 'error' })
 })
+router.get('/myths', async (req, res) => {
+	const schema = {
+		main: {
+			tableName: 'mainMyths',
+			rows: ['LastDepositDate', 'Btag', 'RegistrationDate'],
+			fieldId: 'Id',
+			equal: {
+				rows: ['LastDepositDate', 'RegistrationDate'],
+				numberCharacters: 10
+			}
+		},
+		total: {
+			tableName: 'totalMyths'
+		}
+	}
+	const response = await Service.myths(schema)
+	if (response) res.status(200).json({ status: 'ok', body: response })
+	else res.status(404).json({ status: 'error' })
+})
 router.get('/test', async (req, res) => {
-	const response = await Service.test()
+	const response = await Service.multiplayer('multiplayer', 'multiplayerResult', 'ClientId')
+	res.status(200).json(response)
+})
+router.get('/multiplayer', async (req, res) => {
+	const response = await Service.multiplayer('multiplayer', 'multiplayerResult', 'ClientId')
 	res.status(200).json(response)
 })
 module.exports = router

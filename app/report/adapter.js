@@ -38,7 +38,22 @@ function joinTables(main, relatives) {
 	})
 	return result
 }
+function filterTableData(dataTable, equalRows, numberCharacters) {
+	const [firstColumn, secondColumn] = equalRows
+	const result = []
+	for (let [key, value] of dataTable) {
+		const value1 = value[firstColumn] ? value[firstColumn].trim().substring(0, numberCharacters) : ''
+		const value2 = value[secondColumn] ? value[secondColumn].trim().substring(0, numberCharacters) : ''
+		value[firstColumn] = value1
+		value[secondColumn] = value2
+		if (value1 !== '' && value2 !== '') {
+			if (value1 === value2) result.push([key, ...Object.values(value)])
+		}
+	}
+	return result
+}
 module.exports = {
 	getMapFromTableData,
-	joinTables
+	joinTables,
+	filterTableData
 }
