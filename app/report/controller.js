@@ -77,4 +77,16 @@ router.get('/multiplayer', async (req, res) => {
 	const response = await Service.multiplayer('multiplayer', 'multiplayerResult', 'ClientId')
 	res.status(200).json(response)
 })
+router.get('/elastic', async (req, res) => {
+	const response = await Service.elastic('ElasticSearch', 'demo', 'Sheet30')
+	res.status(200).json(response)
+})
+router.get('/elastic/clear', async (req, res) => {
+	const response = await Service.elasticClearIndex('demo')
+	res.status(200).json(response)
+})
+router.get('/elastic/init', async (req, res) => {
+	const response = await Service.elasticBulkIndex('ElasticSearch', 'test-index')
+	res.status(200).json(response)
+})
 module.exports = router

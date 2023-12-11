@@ -52,8 +52,19 @@ function filterTableData(dataTable, equalRows, numberCharacters) {
 	}
 	return result
 }
+function getArrObjects(data) {
+	const [keys, ...dataBody] = data
+	const result = []
+	dataBody.forEach(item => {
+		const obj = {}
+		keys.forEach((key, index) => (obj[key] = item[index]))
+		result.push(obj)
+	})
+	return result
+}
 module.exports = {
 	getMapFromTableData,
 	joinTables,
-	filterTableData
+	filterTableData,
+	getArrObjects
 }

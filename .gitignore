@@ -3,3 +3,4 @@
 .env
 secrets.json
 cloudSecret.json
+elasticSecret.js
